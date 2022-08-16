@@ -9,13 +9,13 @@ console.log("hi");
  * adds one fact to the dom
  */
 
-async function get_num_fact(num) {
+// async function get_num_fact(num) {
 
-  const response = await axios.get(`${BASE_URL}${num}`);
-  let fact = response.data;
+//   const response = await axios.get(`${BASE_URL}${num}`);
+//   let fact = response.data;
 
-  $("#num").append(`<p>${fact}</p>`);
-}
+//   $("#num").append(`<p>${fact}</p>`);
+// }
 
 // console.log("bye")
 
@@ -47,3 +47,37 @@ async function get_num_fact(num) {
 // }
 
 // get_fact_fav();
+
+
+// grab deck id after
+
+// Part 2. question 1
+
+// async function getDeck(){
+//   let response = await axios.get('http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1');
+//   let deckId = response.data.deck_id
+
+//   let drawCard = await axios.get(`http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
+//   console.log(drawCard.data.cards[0].suit)
+//   console.log(drawCard.data.cards[0].value)
+// }
+
+// getDeck()
+
+
+// part 2. question 2
+
+async function getDeck(){
+  let response = await axios.get('http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1');
+  let deckId = response.data.deck_id
+
+  let drawCard = await axios.get(`http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
+  console.log(drawCard.data.cards[0].suit)
+  console.log(drawCard.data.cards[0].value)
+
+  let drawCard2 = await axios.get(`http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
+  console.log(drawCard2.data.cards[0].suit)
+  console.log(drawCard2.data.cards[0].value)
+}
+
+getDeck()
